@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Quantum Business AI - Summer Drops</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-zinc-950 text-white">
+  <div class="max-w-4xl mx-auto p-8">
+    <h1 class="text-4xl font-bold mb-2">Quantum Gains Store</h1>
+    <p class="text-emerald-400">Trending Products • Direct Ship</p>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+      <div class="bg-zinc-900 p-6 rounded-2xl">
+        <h2 class="text-xl">Rechargeable Turbo Fan</h2>
+        <p class="text-3xl font-bold mt-2">$29.99</p>
+        <button onclick="buy('turbo-fan')" class="mt-6 w-full bg-white text-black py-4 rounded-xl font-semibold">Buy Now - Ships Fast</button>
+      </div>
+      <!-- Duplicate for other products -->
+    </div>
+  </div>
+
+  <script src="https://js.stripe.com/v3/"></script>
+  <script>
+    const stripe = Stripe('pk_live_...YOUR_KEY_HERE...');
+    function buy(item) {
+      // For now: alert or redirect to Stripe Payment Link
+      alert('Checkout starting for ' + item + ' (connect full Stripe session)');
+    }
+  </script>
+</body>
+</html>
