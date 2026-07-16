@@ -1,31 +1,58 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Quantum Business AI - Summer Drops</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Business AI • Elite Tech Drops</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://js.stripe.com/v3/"></script>
+    <style>
+        body { font-family: 'Inter', system-ui; }
+        h1, h2 { font-family: 'Playfair Display', serif; }
+    </style>
 </head>
-<body class="bg-zinc-950 text-white">
-  <div class="max-w-4xl mx-auto p-8">
-    <h1 class="text-4xl font-bold mb-2">Quantum Gains Store</h1>
-    <p class="text-emerald-400">Trending Products • Direct Ship</p>
-    
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
-      <div class="bg-zinc-900 p-6 rounded-2xl">
-        <h2 class="text-xl">Rechargeable Turbo Fan</h2>
-        <p class="text-3xl font-bold mt-2">$29.99</p>
-        <button onclick="buy('turbo-fan')" class="mt-6 w-full bg-white text-black py-4 rounded-xl font-semibold">Buy Now - Ships Fast</button>
-      </div>
-      <!-- Duplicate for other products -->
-    </div>
-  </div>
+<body class="bg-zinc-950 text-zinc-100">
+    <header class="border-b border-zinc-800">
+        <div class="max-w-6xl mx-auto px-8 py-6 flex justify-between items-center">
+            <h1 class="text-3xl font-bold tracking-tight">QUANTUM</h1>
+            <p class="text-xs uppercase tracking-widest text-emerald-400">For those who build empires</p>
+        </div>
+    </header>
 
-  <script src="https://js.stripe.com/v3/"></script>
-  <script>
-    const stripe = Stripe('pk_live_51SZmG0ATzXV53mGdc0XrhIooBEMLSsUNzG23eLGtPVvv6WUReRu6dat8b6taJCO0x3cs25eJAI8seQhoUySQe3nF00QKg6yyeN');
-    function buy(item) {
-      // For now: alert or redirect to Stripe Payment Link
-      alert('Checkout starting for ' + item + ' (connect full Stripe session)');
-    }
-  </script>
+    <main class="max-w-6xl mx-auto px-8 py-20">
+        <div class="text-center mb-20">
+            <h2 class="text-6xl font-bold leading-none">Premium Tech. <span class="text-emerald-400">No Gatekeeping.</span></h2>
+            <p class="mt-6 text-xl text-zinc-400">Raspberry Pi gear for the quiet rebels.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            <!-- Product 1 -->
+            <div class="group bg-zinc-900 rounded-3xl overflow-hidden">
+                <div class="h-64 bg-zinc-800 flex items-center justify-center text-6xl">🖥️</div>
+                <div class="p-8">
+                    <h3 class="text-2xl font-semibold">Raspberry Pi 5 Kit</h3>
+                    <p class="text-emerald-400 text-3xl font-bold mt-2">$89.99</p>
+                    <p class="text-zinc-500 mt-2 text-sm">Full starter kit. Build your own AI edge device.</p>
+                    <button onclick="checkout('rpi5')" class="mt-8 w-full bg-white text-black py-4 rounded-2xl font-semibold group-hover:bg-emerald-400 transition">
+                        Claim Your Setup
+                    </button>
+                </div>
+            </div>
+
+            <!-- Add 2 more similar -->
+        </div>
+
+        <div class="text-center mt-20 text-zinc-500 text-sm">
+            "For the ones who code while the elites play golf." — Quantum
+        </div>
+    </main>
+
+    <script>
+        const stripe = Stripe('pk_live_YOUR_REAL_KEY_HERE');
+        function checkout(item) {
+            alert('Test checkout for ' + item + ' — real Stripe coming next push.');
+        }
+    </script>
 </body>
 </html>
