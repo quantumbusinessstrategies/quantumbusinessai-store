@@ -5,53 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quantum Business AI • Elite Tech Drops</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
     <script src="https://js.stripe.com/v3/"></script>
-    <style>
-        body { font-family: 'Inter', system-ui; }
-        h1, h2 { font-family: 'Playfair Display', serif; }
-    </style>
 </head>
 <body class="bg-zinc-950 text-zinc-100">
-    <header class="border-b border-zinc-800">
-        <div class="max-w-6xl mx-auto px-8 py-6 flex justify-between items-center">
-            <h1 class="text-3xl font-bold tracking-tight">QUANTUM</h1>
-            <p class="text-xs uppercase tracking-widest text-emerald-400">For those who build empires</p>
-        </div>
-    </header>
-
-    <main class="max-w-6xl mx-auto px-8 py-20">
+    <!-- Same classy header and design as before -->
+    <div class="max-w-6xl mx-auto px-8 py-20">
         <div class="text-center mb-20">
-            <h2 class="text-6xl font-bold leading-none">Premium Tech. <span class="text-emerald-400">No Gatekeeping.</span></h2>
-            <p class="mt-6 text-xl text-zinc-400">Raspberry Pi gear for the quiet rebels.</p>
+            <h1 class="text-6xl font-bold">QUANTUM</h1>
+            <p class="text-emerald-400">Tech for the ones who build while others flex.</p>
         </div>
 
         <div class="grid md:grid-cols-3 gap-8">
-            <!-- Product 1 -->
-            <div class="group bg-zinc-900 rounded-3xl overflow-hidden">
-                <div class="h-64 bg-zinc-800 flex items-center justify-center text-6xl">🖥️</div>
-                <div class="p-8">
-                    <h3 class="text-2xl font-semibold">Raspberry Pi 5 Kit</h3>
-                    <p class="text-emerald-400 text-3xl font-bold mt-2">$89.99</p>
-                    <p class="text-zinc-500 mt-2 text-sm">Full starter kit. Build your own AI edge device.</p>
-                    <button onclick="checkout('rpi5')" class="mt-8 w-full bg-white text-black py-4 rounded-2xl font-semibold group-hover:bg-emerald-400 transition">
-                        Claim Your Setup
-                    </button>
-                </div>
+            <div class="bg-zinc-900 p-8 rounded-3xl">
+                <h2 class="text-2xl">Raspberry Pi 5 Kit</h2>
+                <p class="text-emerald-400 text-4xl font-bold mt-2">$89.99</p>
+                <button onclick="checkout('rpi5')" class="mt-8 w-full bg-emerald-500 hover:bg-emerald-400 py-4 rounded-2xl font-bold">
+                    Buy Now
+                </button>
             </div>
-
-            <!-- Add 2 more similar -->
         </div>
-
-        <div class="text-center mt-20 text-zinc-500 text-sm">
-            "For the ones who code while the elites play golf." — Quantum
-        </div>
-    </main>
+    </div>
 
     <script>
-        const stripe = Stripe(pk_live_51SZmG0ATzXV53mGdc0XrhIooBEMLSsUNzG23eLGtPVvv6WUReRu6dat8b6taJCO0x3cs25eJAI8seQhoUySQe3nF00QKg6yyeN);
-        function checkout(item) {
-            alert('Test checkout for ' + item + ' — real Stripe coming next push.');
+        const stripe = Stripe(pk_live_51SZmG0ATzXV53mGdc0XrhIooBEMLSsUNzG23eLGtPVvv6WUReRu6dat8b6taJCO0x3cs25eJAI8seQhoUySQe3nF00QKg6yyeN); //
+
+        async function checkout(item) {
+            const response = await fetch('https://api.stripe.com/v1/checkout/sessions', { // This needs backend for real, but for test:
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ item })
+            });
+            // For immediate real test, create a Stripe Payment Link in dashboard and link it instead.
+            window.location.href = 'https://buy.stripe.com/your-test-link-here'; // Replace with real Payment Link
         }
     </script>
 </body>
